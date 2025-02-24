@@ -7,7 +7,7 @@ public class Hospital {
 
         for (int i = 0; i < 100; i++) {
             //Формирование температуры в пределах от 32.0 до 40.0 - 33.117928
-            float randomTemperature = startTemperature + ((float) (Math.random() * 9.0));
+            float randomTemperature = startTemperature + ((float) (Math.random() * ((endTemperature - startTemperature) + 1)));
             if (randomTemperature > 40) {
                 randomTemperature = 40.0f;
             }
@@ -20,7 +20,5 @@ public class Hospital {
 
             System.out.println(finalTemperature);
         }
-
     }
-
 }
