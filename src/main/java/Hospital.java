@@ -24,5 +24,3 @@ public class Hospital {
         System.out.println("Кол-во здоровых пациентов равно: " + countHealthyPatients);
     }
 }
-
-}
