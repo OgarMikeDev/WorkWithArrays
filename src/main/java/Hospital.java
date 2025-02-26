@@ -3,7 +3,7 @@ public class Hospital {
         StringBuilder allTemperatures = new StringBuilder();
         int countHealthyPatients = 0;
         float valuesTemperatures = 0f;
-        int countAllTemperatures = 0;
+        int countAllPeople = 0;
         float averageAllTemperatures = 0f;
 
         for (int i = 0; i < 100; i++) {
@@ -13,12 +13,12 @@ public class Hospital {
             if (randomTemperature >= 36.2 && randomTemperature <= 36.9) {
                 countHealthyPatients++;
             }
-            countAllTemperatures++;
+            countAllPeople++;
             valuesTemperatures += randomTemperature;
             allTemperatures.append(randomTemperature + "\n");
         }
 
-        averageAllTemperatures = valuesTemperatures / countAllTemperatures;
+        averageAllTemperatures = valuesTemperatures / countAllPeople;
         System.out.println("Среднее значение всех температур: " + averageAllTemperatures);
         System.out.println("Набор всех температур:\n" + String.valueOf(allTemperatures));
         System.out.println("Кол-во здоровых пациентов равно: " + countHealthyPatients);
