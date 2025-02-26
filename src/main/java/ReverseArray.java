@@ -18,10 +18,18 @@ public class ReverseArray {
         Конечный массив - "d", "c", "b", "a"
          */
 
-        for (int i = 0; i < array.length / 2; i++) {
-            String temp = array[i];
-            array[i] = array[array.length - 1 - i];
-            array[array.length - 1 - i] = temp;
+//        for (int i = 0; i < array.length / 2; i++) {
+//            String temp = array[i];
+//            array[i] = array[array.length - 1 - i];
+//            array[array.length - 1 - i] = temp;
+//        }
+
+        //Вариативный способ
+        int endIndex = array.length - 1;
+        for (int startIndex = 0; startIndex < endIndex; startIndex++, endIndex--) {
+            String temp = array[startIndex];
+            array[startIndex] = array[endIndex];
+            array[endIndex] = temp;
         }
         return array;
     }
