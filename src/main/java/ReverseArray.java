@@ -26,12 +26,13 @@ public class ReverseArray {
 
         //Вариативный способ
         int endIndex = array.length - 1;
-        for (int startIndex = 0; startIndex < endIndex; startIndex++, endIndex--) {
-            String temp = array[startIndex];
-            array[startIndex] = array[endIndex];
-            array[endIndex] = temp;
+        for (int indexLeftPart = 0, indexRightPart = arrayLetters.length - 1; indexLeftPart < indexRightPart; indexLeftPart++, indexRightPart--) {
+            String temp = array[indexLeftPart];
+            array[indexLeftPart] = arrayLetters[indexRightPart];
+            array[indexRightPart] = temp;
         }
         return array;
+
     }
 
     public static String[] reverseWithStringBuilder(String[] array) {
