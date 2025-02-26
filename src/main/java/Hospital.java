@@ -1,26 +1,28 @@
 public class Hospital {
     public static void main(String[] args) {
-        StringBuilder allTemperatures = new StringBuilder();
-        int countHealthyPatients = 0;
-        float valuesTemperatures = 0f;
-        int countAllPeople = 0;
-        float averageAllTemperatures = 0f;
+        generatePatientsTemperature();
+        StringBuilder builderPatientsTemperature = new StringBuilder();
+
+        for (float currentPatientTemperature : generatePatientsTemperature()) {
+            builderPatientsTemperature.append(currentPatientTemperature + "\n");
+        }
+        String strPatientsTemperature = String.valueOf(builderPatientsTemperature);
+        System.out.println(strPatientsTemperature);
+    }
+
+    public static float[] generatePatientsTemperature() {
+        float[] arrayPatientsTemperature = new float[100];
+
+        float startTemperature = 32.0f;
+        float endTemperature = 40.0f;
 
         for (int i = 0; i < 100; i++) {
-            float start = 32.0f;
-            float end = 40.0f;
-            float randomTemperature = start + ((float) (Math.random() * ((end - start) + 1)));
-            if (randomTemperature >= 36.2 && randomTemperature <= 36.9) {
-                countHealthyPatients++;
+            float randomTemperature = startTemperature + ((float) (Math.random() * ((endTemperature - startTemperature) + 1)));
+            if (randomTemperature > 40) {
+                randomTemperature = 40;
             }
-            countAllPeople++;
-            valuesTemperatures += randomTemperature;
-            allTemperatures.append(randomTemperature + "\n");
+            arrayPatientsTemperature[i] = randomTemperature;
         }
-
-        averageAllTemperatures = valuesTemperatures / countAllPeople;
-        System.out.println("Среднее значение всех температур: " + averageAllTemperatures);
-        System.out.println("Набор всех температур:\n" + String.valueOf(allTemperatures));
-        System.out.println("Кол-во здоровых пациентов равно: " + countHealthyPatients);
+        return arrayPatientsTemperature;
     }
 }
