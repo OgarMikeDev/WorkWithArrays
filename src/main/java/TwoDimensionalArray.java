@@ -1,31 +1,39 @@
-import java.util.Scanner;
-
-public class TwoDimensionalArray {
+public class Array {
     public static void main(String[] args) {
-        System.out.println("Введите размер квадратного массива: ");
-        int size = new Scanner(System.in).nextInt();
-        char[][] squareArrayChars = getTwoDimensionalArray(size);
+        String[][] updateArray = new String[4][4];
+        updateArray = getTwoDimensionalArrayParallel(updateArray);
 
-        for (int indexRow = 0; indexRow < squareArrayChars.length; indexRow++) {
-            for (int indexColumn = 0; indexColumn < squareArrayChars[indexRow].length; indexColumn++) {
-                System.out.print(squareArrayChars[indexRow][indexColumn]);
+        for (int indexRow = 0; indexRow < updateArray.length; indexRow++) {
+            for (int indexColumn = 0; indexColumn < updateArray[indexRow].length; indexColumn++) {
+                System.out.print(updateArray[indexRow][indexColumn]);
             }
             System.out.println();
         }
     }
-    public static char[][] getTwoDimensionalArray(int size) {
-        char[][] squareArrayChars = new char[size][size];
 
-        for (int indexRow = 0; indexRow < squareArrayChars.length; indexRow++) {
-            for (int indexColumn = 0; indexColumn < squareArrayChars[indexRow].length; indexColumn++) {
-                //indexRow == squareArrayChars.length - 1 - indexColumn
-                if (indexRow == indexColumn || indexRow + indexColumn == squareArrayChars.length - 1) {
-                    squareArrayChars[indexRow][indexColumn] = 'X';
+    public static String[][] getTwoDimensionalArrayParallel(String[][] array) {
+        for (int indexRow = 0, indexLeftPart = 0, indexRightPart = array.length - 1; indexRow < array.length; indexRow++, indexLeftPart++, indexRightPart--) {
+            for (int indexColumn = 0; indexColumn < array[indexRow].length; indexColumn++) {
+                array[indexRow][indexColumn] = " ";
+            }
+            array[indexRow][indexLeftPart] = "X";
+            array[indexRow][indexRightPart] = "X";
+        }
+        return array;
+    }
+
+    public static void getTwoDimensionalArray(String[][] array) {
+        for (int indexRow = 0; indexRow < array.length; indexRow++) {
+            for (int indexColumn = 0; indexColumn < array[indexRow].length; indexColumn++) {
+                if (indexRow == indexColumn || indexRow + indexColumn == array.length - 1) {
+                    array[indexRow][indexColumn] = "X";
+                    System.out.print(array[indexRow][indexColumn]);
                 } else {
-                    squareArrayChars[indexRow][indexColumn] = ' ';
+                    array[indexRow][indexColumn] = " ";
+                    System.out.print(array[indexRow][indexColumn]);
                 }
             }
+            System.out.println();
         }
-        return squareArrayChars;
     }
 }
