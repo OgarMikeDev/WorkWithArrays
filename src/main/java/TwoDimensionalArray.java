@@ -1,4 +1,4 @@
-public class Array {
+public class TwoDimensionalArray {
     public static void main(String[] args) {
         String[][] updateArray = new String[4][4];
         updateArray = getTwoDimensionalArrayParallel(updateArray);
